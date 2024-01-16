@@ -25,6 +25,14 @@ public class HandleDropDown extends BaseClass{
 	{
 		return new Select(Wait.visibilityStatus(wb)).getFirstSelectedOption();
 	}
+	public void getOptions(List<WebElement>list)
+	{
+		List<WebElement> ls=Wait.visibilityOfAllElement(list);
+		for(WebElement lisdata:ls)
+		{
+			System.out.println(lisdata.getText());
+		}
+	}
 	public static int size(WebElement wb)
 	{
 			return new Select(Wait.visibilityStatus(wb)).getOptions().size();
@@ -32,6 +40,16 @@ public class HandleDropDown extends BaseClass{
 	}
 	public void selectDropDown(List<WebElement> list,String value)
 	{
+		List<WebElement>ls=Wait.visibilityOfAllElement(list);
+		for(WebElement data:ls)
+		{
+			String val=data.getText();
+			if(val.equalsIgnoreCase(value))
+			{
+				data.click();
+				break;
+			}
+		}
 		
 	}
 }
